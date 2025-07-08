@@ -1,0 +1,33 @@
+{
+    "ModelName": "mlops-mps-model-v1",
+    "Containers": [
+        {
+            "Mode": "SingleModel",
+            "ModelPackageName": "arn:aws:sagemaker:us-east-1:061051239029:model-package/mlops-mps-model-group/1"
+        }
+    ],
+    "ExecutionRoleArn": "arn:aws:iam::061051239029:role/MpsGroupStack-SageMakerExecutionRole7843F3B8-LvvZveflIEtW",
+    "CreationTime": "2025-07-07T13:01:41.215000-05:00",
+    "ModelArn": "arn:aws:sagemaker:us-east-1:061051239029:model/mlops-mps-model-v1",
+    "EnableNetworkIsolation": false,
+    "DeploymentRecommendation": {
+        "RecommendationStatus": "COMPLETED",
+        "RealTimeInferenceRecommendations": [
+            {
+                "RecommendationId": "mlops-mps-model-v1/qmh86HRr",
+                "InstanceType": "ml.g4dn.2xlarge",
+                "Environment": {}
+            },
+            {
+                "RecommendationId": "mlops-mps-model-v1/4zOTx2s9",
+                "InstanceType": "ml.c6i.large",
+                "Environment": {}
+            },
+            {
+                "RecommendationId": "mlops-mps-model-v1/fGpwJPWt",
+                "InstanceType": "ml.c6i.2xlarge",
+                "Environment": {}
+            }
+        ]
+    }
+}

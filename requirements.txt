@@ -1,0 +1,11 @@
+aws-cdk-lib==2.202.0
+constructs>=10.0.0,<11.0.0
+boto3
+sagemaker
+pandas
+s3fs
+numpy
+scikit-learn
+ipykernel
+matplotlib
+
