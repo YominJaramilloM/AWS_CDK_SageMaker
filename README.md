@@ -131,7 +131,7 @@ aws sagemaker start-pipeline-execution --pipeline-name mlops-mps-pipeline
 
 La ejecucion del pipeline dispara Processing Job y este a su vez una vez finalizado dispara Training Job, el pipeline disenado llega hasta la creacion parcial de un modelo, que espera por aprovacion manual.
 
-![Processing Jobs](images/processingJob.PNG)
+![Processing Jobs](./images/processingJob.PNG)
 ![Training Jobs](images/tranningJob.PNG)
 
 Puede verificar que su modelo esta listo para ser aprovado ejecutando:
