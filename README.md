@@ -129,6 +129,22 @@ aws sagemaker start-pipeline-execution --pipeline-name mlops-mps-pipeline
 
 ---
 
+La ejecucion del pipeline dispara Processing Job y este a su vez una vez finalizado dispara Training Job, el pipeline disenado llega hasta la creacion parcial de un modelo, que espera por aprovacion manual.
+
+![Processing Jobs](images/processingJob.PNG)
+![Training Jobs](images/tranningJob.PNG)
+
+Puede verificar que su modelo esta listo para ser aprovado ejecutando:
+
+```bash
+aws sagemaker list-model-packages   --model-package-group-name xxx-xxx-xxx   --region us-east-1   --query "ModelPackageSummaryList[*].[ModelPackageArn, ModelPackageStatus, ModelApprovalStatus, CreationTime]"   --output table
+```
+Y puede realizar la aprovacion con:
+
+```bash
+aws sagemaker update-model-package     --model-package-name arn:aws:sagemaker:us-east-1:061051239029:model-package/xxx-xxx-xxx/x     --model-approval-status Approved     --region us-east-1
+```
+
 ## Creación del Modelo Manualmente
 
 Ejemplo de creación del modelo desde artefacto en S3:
@@ -178,6 +194,7 @@ aws sagemaker create-endpoint \
 ```
 
 ---
+![Enpoint final](images/endpoint.PNG)
 
 ## Prueba del Endpoint
 
@@ -192,17 +209,13 @@ El archivo `test_prod_model.json` contiene los datos de entrada para probar el m
 Invocar el endpoint:
 
 ```bash
-aws sagemaker-runtime invoke-endpoint \
-  --endpoint-name mlops-mps-endpoint-vX \
-  --body fileb://test_prod_model.json \
-  --content-type application/json \
-  --accept application/json \
-  output.json
+aws sagemaker-runtime invoke-endpoint --endpoint-name mlops-mps-endpoint-vX --body fileb://test_prod_model.json --content-type application/json --accept application/json output.json
 ```
 
 La salida de la predicción se guarda en el archivo `output.json`.
 
 ---
+![Inference](images/inference.png)
 
 ## Notas Finales
 
